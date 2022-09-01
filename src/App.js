@@ -42,10 +42,10 @@ class App extends React.Component {
 
   restatrGame = () => {
     this.setState ({
-      cards: this.state.cards.map(card => {
+      cards: this.shufleCards(this.state.cards.map(card => {
         card.opened = false;
         return card
-      })
+      }))
     })
     console.log('restartGame')
   }
