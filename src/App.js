@@ -27,7 +27,7 @@ class App extends React.Component {
 
   shufleCards(array){
     let currentIndex = array.length,  randomIndex;
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
       [array[currentIndex], array[randomIndex]] = [
@@ -40,13 +40,25 @@ class App extends React.Component {
     console.log('showSettings')
   }
 
-  restatrGame = () => {
+  closeAllCards = () => {
     this.setState ({
-      cards: this.shufleCards(this.state.cards.map(card => {
+      cards: this.state.cards.map(card => {
         card.opened = false;
-        return card
-      }))
+        return card;
+      }),
+      clickCooldown: true,
     })
+  }
+
+  restatrGame = () => {
+    this.closeAllCards();
+    setTimeout(() => {
+      this.setState ({
+        cards: this.shufleCards(this.state.cards),
+        clickCooldown: false,
+        currentMove: 'first',
+      })
+    }, 500);
     console.log('restartGame')
   }
 
