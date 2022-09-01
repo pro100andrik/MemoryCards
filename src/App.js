@@ -19,10 +19,21 @@ class App extends React.Component {
     this.state = ({
       moves: 0,
       time: 0,
-      cards: [...structuredClone(defaultCards).slice(0, 8), ...structuredClone(defaultCards).slice(0, 8)],
+      cards: this.shufleCards([...structuredClone(defaultCards).slice(0, 8), ...structuredClone(defaultCards).slice(0, 8)]),
       mode: "4x4",
       currentMove: 'first',
     })
+  }
+
+  shufleCards(array){
+    let currentIndex = array.length,  randomIndex;
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+    }
+  return array;
   }
 
   showSettings = () => {
