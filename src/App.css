@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+body {
+  background-image: linear-gradient(to right, #ff6e7f, #bfe9ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.wrapper {
+  background: rgba(0, 0, 0, 0.1);
+  width: calc(100vw - 100px);
+  max-width: 600px;
+  min-width: 400px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title-box {
+  font-size: 2em;
+}
+
+.info-controls-box{
+  display: flex;
+}
+
+.info-controls-box > div {
+  margin: 4px;
+}
+
+.game-box {
+  background-color: #fff;
+  width: 100%;
+}
+
+.card {
+  display: inline-block;
+  margin: .4%;
+  border-radius: 4px;
+  /* overflow: hidden; */
+  background-color: rgba(14, 44, 47, 0.67)
+}
+
+.opened-picture {
+  width: 70%;
+  height: 70%;
+  margin: 15%;
+  transition: all 0.4s ease-in-out;
+  backface-visibility: hidden;
+  transform: rotate3d(0,1,0,0deg);
+}
+
+.closed-picture {
+  width: 70%;
+  height: 70%;
+  margin: 15%;
+  backface-visibility: hidden;
+  transform: rotate3d(0,1,0,180deg);
+  transition: all 0.4s ease-in-out;
+}
