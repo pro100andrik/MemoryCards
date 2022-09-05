@@ -1,6 +1,6 @@
 const Settings = props => {
   return (
-    <>
+    <div className='settings'>
       <div>Settings</div>
       <div> Mode: {props.modes.map((element, index) => {
         return <Button key={index} mode={element} prevMode={props.mode} changeMode={props.changeMode}/>
@@ -8,7 +8,7 @@ const Settings = props => {
       <div>Hardcore mode:
         <button onClick={props.toggleHardcore}
                 className={props.hardcore ? 'hardcore-button-on' : 'hardcore-button-off'}>{props.hardcore ? 'On' : 'Off'}</button></div>
-    </>
+    </div>
   )
 }
 
