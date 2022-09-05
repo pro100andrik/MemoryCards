@@ -2,6 +2,7 @@ import React from 'react';
 import InfoControls from './components/InfoControls';
 import { DEFAULTCARDS } from './components/DEFAULTCARDS';
 import GameBoard from './components/GameBoard';
+import Settings from './components/Settings';
 
 import './App.css';
 
@@ -21,8 +22,11 @@ class App extends React.Component {
       time: 0,
       cards: this.shufleCards([...structuredClone(defaultCards).slice(0, 8), ...structuredClone(defaultCards).slice(0, 8)]),
       mode: "4x4",
+      modes: ['4x3', '4x4', '4x5', '6x3', '6x4', '6x5', '6x6'],
       currentMove: 'first',
       gameStatus: 'waiting',
+      hardcore: false,
+      showSettings: false,
     })
   }
 
@@ -34,11 +38,13 @@ class App extends React.Component {
       [array[currentIndex], array[randomIndex]] = [
       array[randomIndex], array[currentIndex]];
     }
-  return array;
+    return array;
   }
 
   showSettings = () => {
-    console.log('showSettings')
+    this.setState({
+      showSettings: !this.state.showSettings
+    })
   }
 
   closeAllCards = () => {
@@ -67,7 +73,6 @@ class App extends React.Component {
         clickCooldown: false,
       })
     }, 500);
-    console.log('restartGame')
   }
 
   handleCardClick = (cardIndex) => {
@@ -108,12 +113,18 @@ class App extends React.Component {
       },this.openCardByIndex(cardIndex))
       setTimeout(() => {
         if (this.state.firstOpenedCardId !== this.state.secondOpenedCardId){
-          this.closeCardsByIndex(this.state.firstOpenedCardIndex, this.state.secondOpenedCardIndex);
+          if(this.state.hardcore){
+            setTimeout(() => {
+              this.closeAllCards();
+              this.resetCooldown();
+            }, 1000);
+          }else{
+            this.closeCardsByIndex(this.state.firstOpenedCardIndex, this.state.secondOpenedCardIndex);
+          }
         }else{
           this.resetCooldown();
           this.checkForWin();
         }
-        // console.log(this.state.firstOpenedCardId,this.state.secondOpenedCardId)
       }, 1);
     }
 
@@ -130,7 +141,6 @@ class App extends React.Component {
       this.setState({
         gameStatus: 'win',
       })
-      console.log('win')
     }
   }
 
@@ -144,7 +154,6 @@ class App extends React.Component {
     this.setState({
       cards: this.state.cards.map((card, index) => {
         if (cardIndex === index){
-          // console.log(cardIndex , index)
           card.opened = !card.opened
         };
         return card;
@@ -157,7 +166,6 @@ class App extends React.Component {
       this.setState({
         cards: this.state.cards.map((card, index) => {
           if (firstOpenedCardIndex === index || secondOpenedCardIndex === index){
-            // console.log(cardIndex , index)
             card.opened = false
           };
           return card;
@@ -166,8 +174,21 @@ class App extends React.Component {
     }, 1000);
   }
 
+  changeMode = (targetMode) => {
+    const sliceTo = (+targetMode[0] * +targetMode[2]) / 2;
+    this.setState({
+      mode: targetMode,
+      cards: this.shufleCards([...structuredClone(defaultCards).slice(0, sliceTo), ...structuredClone(defaultCards).slice(0, sliceTo)])
+    }, this.restatrGame)
+  }
+
+  toggleHardcore = () => {
+    this.setState({
+      hardcore: !this.state.hardcore
+    }, this.restatrGame)
+  }
+
   render(){
-    // console.log(this.state.cards)
     return(
       <>
 
@@ -186,6 +207,16 @@ class App extends React.Component {
           <GameBoard cards={this.state.cards}
             mode={this.state.mode}
             handleCardClick={this.handleCardClick}/>
+          {this.state.showSettings
+            ?
+          <Settings modes={this.state.modes}
+            mode={this.state.mode}
+            changeMode={this.changeMode}
+            hardcore={this.state.hardcore}
+            toggleHardcore={this.toggleHardcore}/>
+            :
+          null
+          }
         </div>
       </>
     )
