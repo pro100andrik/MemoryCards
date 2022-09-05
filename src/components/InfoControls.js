@@ -4,8 +4,8 @@ const InfoControls = (props) => {
     <div className="info-controls-box">
       <div>Time: {props.time} </div>
       <div>Moves: {props.moves} </div>
-      <div onClick={props.restartGame}> restart </div>
-      <div onClick={props.showSettings}> settings </div>
+      <div><button className='button' onClick={props.restartGame}>Restart</button></div>
+      <div><button className='button' onClick={props.showSettings}>Settings</button></div>
     </div>
   )
 }
