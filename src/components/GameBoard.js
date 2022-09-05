@@ -10,7 +10,8 @@ class GameBoard extends React.Component{
       <div className="game-box">
 
         {this.props.cards.map((card, index) => {
-          return (<Card index={index}
+          return (<Card key={index}
+                    index={index}
                     img={card.img}
                     opened={card.opened}
                     width={+this.props.mode[0] === 4 ? "24.2%" : "15.866%"}
