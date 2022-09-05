@@ -3,6 +3,8 @@ import InfoControls from './components/InfoControls';
 import { DEFAULTCARDS } from './components/DEFAULTCARDS';
 import GameBoard from './components/GameBoard';
 import Settings from './components/Settings';
+import { CSSTransition } from 'react-transition-group';
+
 
 import './App.css';
 
@@ -13,6 +15,7 @@ const defaultCards = DEFAULTCARDS.map((element, index) => {
   card.opened = false;
   return card;
 })
+
 
 class App extends React.Component {
   constructor(props){
@@ -188,6 +191,9 @@ class App extends React.Component {
     }, this.restatrGame)
   }
 
+
+  wrapper = React.createRef();
+
   render(){
     return(
       <>
@@ -207,7 +213,25 @@ class App extends React.Component {
           <GameBoard cards={this.state.cards}
             mode={this.state.mode}
             handleCardClick={this.handleCardClick}/>
-          {this.state.showSettings
+
+          <CSSTransition in={this.state.showSettings}
+                         timeout={300}
+                         classNames="settings"
+                         unmountOnExit
+                         ref={this.wrapper}>
+            <Settings modes={this.state.modes}
+              mode={this.state.mode}
+              changeMode={this.changeMode}
+              hardcore={this.state.hardcore}
+              toggleHardcore={this.toggleHardcore}/>
+          </CSSTransition>
+
+
+
+
+
+
+          {/* {this.state.showSettings
             ?
           <Settings modes={this.state.modes}
             mode={this.state.mode}
@@ -216,7 +240,7 @@ class App extends React.Component {
             toggleHardcore={this.toggleHardcore}/>
             :
           null
-          }
+          } */}
         </div>
       </>
     )
