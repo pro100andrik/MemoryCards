@@ -64,7 +64,7 @@ body {
   border-radius: 4px;
   /* overflow: hidden; */
   /* background-color: rgba(14, 44, 47, 0.67); */
-  background-color: #5193b3;
+  background-color: #0ab68b;
   cursor: pointer;
 }
 
@@ -96,11 +96,14 @@ body {
   border: none;
   border-radius: 5px;
   padding: 7px 10px;
+  transition: .3s;
 }
 
 .mode-button:hover {
-  background-color: #ffe3b3
+  background-color: #ffe3b3;
+  transition: .3s;
 }
+
 
 .mode-button:disabled {
   background-color: #ffe3b3
@@ -116,6 +119,7 @@ body {
   border: none;
   border-radius: 5px;
   padding: 7px 10px;
+  transition: .3s;
 }
 
 .hardcore-button-off {
@@ -128,4 +132,32 @@ body {
   border: none;
   border-radius: 5px;
   padding: 7px 10px;
+  transition: .3s;
+}
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 0;
+}
+
+.settings-enter {
+  transform: scaleY(0);
+}
+
+.settings-enter-active {
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform 900ms;
+}
+
+.settings-exit {
+  transform: scaleY(1);
+}
+
+.settings-exit-active {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 900ms;
 }
