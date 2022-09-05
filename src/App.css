@@ -29,6 +29,7 @@ body {
 
 .title-box {
   font-size: 2em;
+  font-weight: bold;
 }
 
 .info-controls-box{
@@ -39,8 +40,19 @@ body {
   margin: 4px;
 }
 
+.button {
+  color: white;
+  text-shadow: 0 0 2px black;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #c6df76;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 10px;
+}
+
 .game-box {
-  background-color: #fff;
+  background-color: #f8e6cb;
   width: 100%;
   padding: 3%;
   border-radius: 10px;
@@ -51,7 +63,9 @@ body {
   margin: .4%;
   border-radius: 4px;
   /* overflow: hidden; */
-  background-color: rgba(14, 44, 47, 0.67)
+  /* background-color: rgba(14, 44, 47, 0.67); */
+  background-color: #5193b3;
+  cursor: pointer;
 }
 
 .opened-picture {
@@ -70,4 +84,48 @@ body {
   backface-visibility: hidden;
   transform: rotate3d(0,1,0,180deg);
   transition: all 0.4s ease-in-out;
+}
+
+.mode-button {
+  color: white;
+  text-shadow: 0 0 2px black;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 2px;
+  background-color: #c6df76;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px;
+}
+
+.mode-button:hover {
+  background-color: #ffe3b3
+}
+
+.mode-button:disabled {
+  background-color: #ffe3b3
+}
+
+.hardcore-button-on {
+  color: white;
+  text-shadow: 0 0 2px black;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 2px;
+  background-color: rgb(246, 34, 34);
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px;
+}
+
+.hardcore-button-off {
+  color: white;
+  text-shadow: 0 0 2px black;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 2px;
+  background-color: rgb(86, 255, 6);
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px;
 }
