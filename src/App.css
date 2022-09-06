@@ -13,8 +13,8 @@ body {
 .wrapper {
   /* background: rgba(0, 0, 0, 0.1); */
   width: calc(100vw - 100px);
-  max-width: 600px;
-  min-width: 400px;
+  max-width: 500px;
+  min-width: 300px;
   position: relative;
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@ body {
 }
 
 .info-controls-box > div {
-  margin: 4px;
+  margin: 4px 15px;
 }
 
 .button {
@@ -62,8 +62,6 @@ body {
   display: inline-block;
   margin: .4%;
   border-radius: 4px;
-  /* overflow: hidden; */
-  /* background-color: rgba(14, 44, 47, 0.67); */
   background-color: #0ab68b;
   cursor: pointer;
 }
@@ -149,7 +147,7 @@ body {
 .settings-enter-active {
   transform: scaleY(1);
   transform-origin: top;
-  transition: transform 900ms;
+  transition: transform 400ms;
 }
 
 .settings-exit {
@@ -159,5 +157,5 @@ body {
 .settings-exit-active {
   transform: scaleY(0);
   transform-origin: top;
-  transition: transform 900ms;
+  transition: transform 400ms;
 }
