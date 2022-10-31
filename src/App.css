@@ -8,13 +8,14 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'Roboto Mono', monospace;
+  width: 100vw;
 }
 
 .wrapper {
   /* background: rgba(0, 0, 0, 0.1); */
   width: calc(100vw - 100px);
   max-width: 500px;
-  min-width: 300px;
+  min-width: 280px;
   position: relative;
   display: flex;
   align-items: center;
@@ -158,4 +159,15 @@ body {
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 400ms;
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .wrapper {
+    /* background: rgba(0, 0, 0, 0.1); */
+    width: calc(100vw - 30px);
+    min-width: 0;
+  }
+
 }
